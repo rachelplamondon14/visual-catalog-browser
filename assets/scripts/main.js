@@ -35,7 +35,7 @@ let FilterComponent = {
 				<option value="">--</option>
 				<option v-for="option in options" :value="option.id">{{ option.title }}{{ option.active == 0 ? ' (inactive)' : ''}}</option>
 			</select>
-			
+
 		</div>
 	`,
 	data: function() {
@@ -46,7 +46,7 @@ let FilterComponent = {
 	},
 	mounted() {
 		//Fetch filter options
-		fetch('https://api.rachelplamondon.dev/get-filters.json') //Dummy API
+		fetch(`https://api.rachelplamondon.dev/get-filters.json?dataType=${this.dataType}`) //Dummy API
 			.then(response => response.json())
 			.then(data => {
 				if(data.status) {
